@@ -1,0 +1,7 @@
+#mpiexec -np <no_cores> ~/<rosetta_directory>/main/source/bin/backrub.mpi.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./<receptor>.clean_0001.pdb #relaxed receptor
+-in:file:fullatom
+-out:file:scorefile <receptor>.backrub250.sc
+-nstruct 250
+-backrub:ntrials 10000

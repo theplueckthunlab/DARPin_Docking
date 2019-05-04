@@ -1,0 +1,9 @@
+#~/<rosetta_directory>/main/source/bin/relax.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./<template>_0001.pdb #output from remodel
+-in:file:fullatom
+-out:path:all ./rosetta_output
+-out:file:scorefile output.sc
+-out:file:silent output.out
+-nstruct 40
+-relax:thorough

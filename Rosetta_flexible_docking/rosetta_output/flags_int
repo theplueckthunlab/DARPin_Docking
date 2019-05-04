@@ -1,0 +1,8 @@
+#~/<rosetta_directory>/main/source/bin/InterfaceAnalyzer.mpi.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags_int
+
+-in:file:l files_c.<0/1/2>.txt
+-in:file:fullatom
+-add_regular_scores_to_scorefile
+-out:file:scorefile Interface_c.<0/1/2>.txt
+-out:file:score_only
+-compute_packstat 1

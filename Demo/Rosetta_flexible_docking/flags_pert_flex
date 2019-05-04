@@ -1,0 +1,24 @@
+#mpiexec -np <no_cores> ~/<rosetta_directory>/main/source/bin/rosetta_scripts.mpi.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags_pert_flex
+
+-in:file:l ./files.txt
+
+-out:path:all ./rosetta_output
+-out:file:scorefile demo.sc
+
+-nstruct 1000
+-jd2:ntrials 100
+-ex1
+-ex2aro
+-use_input_sc
+-partners A_D
+-dock_pert 3 8
+-score:docking_interface_score 1
+
+-parser:protocol DARPin_flex.xml
+-parser:view
+
+-constraints:cst_file constraint.cst
+-constraints:cst_fa_file constraint.cst
+-cst_weight 5
+-cst_fa_weight 5
+

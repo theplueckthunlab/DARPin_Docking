@@ -1,0 +1,328 @@
+core.init: Rosetta version rosetta.source.release-156:b1dc16ff17da7a38b52c000abb74f85e4f0333c8 2017-10-27 12:03:34.443146 from http://www.rosettacommons.org
+core.init: command: /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/source/bin/cluster.linuxgccrelease -database /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database @flags_cluster
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=1826353345 seed_offset=0 real_seed=1826353345
+core.init.random: RandomGenerator:init: Normal mode, seed=1826353345 RG_type=mt19937
+
+
+
+ Rosetta Tool:  cluster - clustering tool for PDBs and or silent files 
+ Usage:                                                                  
+   PDB input:      -in:file:s *.pdb   or  
+                   -in:file:l  list_of_pdbs  
+                   -no_optH                                    Dont change positions of Hydrogen atoms! 
+   Silent input:   -in:file:silent silent.out                  silent input filesname 
+                   -in:file:s                                  specify specific tags to be extracted, if left out all will be taken 
+                   -in:file:fullatom                           for full atom structures 
+                   -in:file:silent_struct_type <type>          specify the input silent-file format 
+   Native:         -in:file:native                             native PDB if CaRMS is required 
+   Scorefunction:  -score:weights  weights                     weight set or weights file 
+                   -score:patch  patch                         patch set 
+                   -rescore:verbose                            display score breakdown 
+                   -rescore:output_only                        don't rescore 
+   Output:         -nooutput                                   don't print PDB structures 
+                   -out:prefix  myprefix                       prefix the output structures with a string 
+   Clustering:     -cluster:radius  <float>                    Cluster radius in A (for RMS clustering) or in inverse GDT_TS for GDT clustering. Use "-1" to trigger automatic radius detection
+                   -cluster:gdtmm                              Cluster by gdtmm instead of rms
+                   -cluster:input_score_filter  <float>        Ignore structures above certain energy 
+                   -cluster:exclude_res <int> [<int> <int> ..] Exclude residue numbers               
+                   -cluster:radius        <float>              Cluster radius
+                   -cluster:limit_cluster_size      <int>      Maximal cluster size
+                   -cluster:limit_cluster_size_percent <float> Maximal cluster size by percentage
+                   -cluster:random_limit_cluster_size_percent <float> Maximal cluster size by percentage, cut randomly
+                   -cluster:limit_clusters          <int>      Maximal number of clusters
+                   -cluster:limit_total_structures  <int>      Maximal number of structures in total
+                   -cluster:sort_groups_by_energy              Sort clusters by energy.
+                   -cluster:remove_highest_energy_member       Remove highest energy member of each cluster
+                   -symmetry:symmetric_rmsd       						 For symmetric systems find the lowest rms by testing all chain combinations. Works only with silent file input that contain symmetry info and with all CA rmsd
+ Examples: 
+   cluster -database ~/minirosetta_database -in:file:silent silent.out -in::file::binary_silentfile -in::file::fullatom -native 1a19.pdb 
+clustered Poses are given output names in the form of:
+ c.i.j, which denotes the jth member of the ith cluster.
+
+
+
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 569 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 1.21171 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+core.io.silent.SilentFileData: Reading all structures from relax_output.out
+core.io.silent.SilentFileData: Finished reading 30 structures from relax_output.out
+protocols.cluster: Adding struc: -539.739
+protocols.cluster: Adding struc: -546.475
+protocols.cluster: Adding struc: -539.143
+protocols.cluster: Adding struc: -542.255
+protocols.cluster: Adding struc: -541.293
+protocols.cluster: Adding struc: -538.186
+protocols.cluster: Adding struc: -543.077
+protocols.cluster: Adding struc: -542.17
+protocols.cluster: Adding struc: -542.674
+protocols.cluster: Adding struc: -543.224
+protocols.cluster: Adding struc: -543.616
+protocols.cluster: Adding struc: -544.64
+protocols.cluster: Adding struc: -546.138
+protocols.cluster: Adding struc: -548.117
+protocols.cluster: Adding struc: -543.669
+protocols.cluster: Adding struc: -549.836
+protocols.cluster: Adding struc: -539.599
+protocols.cluster: Adding struc: -545.777
+protocols.cluster: Adding struc: -537.673
+protocols.cluster: Adding struc: -541.351
+protocols.cluster: Adding struc: -539.381
+protocols.cluster: Adding struc: -547.261
+protocols.cluster: Adding struc: -541.618
+protocols.cluster: Adding struc: -546.667
+protocols.cluster: Adding struc: -541.614
+protocols.cluster: Adding struc: -540.476
+protocols.cluster: Adding struc: -538.663
+protocols.cluster: Adding struc: -544.192
+protocols.cluster: Adding struc: -544.343
+protocols.cluster: Adding struc: -546.235
+protocols.cluster: Clustering an initial set of 30 structures 
+protocols.cluster: Calculating RMS matrix: 
+protocols.cluster: Histogram of pairwise similarity values for the initial clustering set
+protocols.cluster: hist 0   13
+protocols.cluster: hist 0.25   222
+protocols.cluster: hist 0.5   168
+protocols.cluster: hist 0.75   32
+protocols.cluster: hist 1   0
+protocols.cluster: hist 1.25   0
+protocols.cluster: hist 1.5   0
+protocols.cluster: hist 1.75   0
+protocols.cluster: hist 2   0
+protocols.cluster: hist 2.25   0
+protocols.cluster: hist 2.5   0
+protocols.cluster: hist 2.75   0
+protocols.cluster: hist 3   0
+protocols.cluster: hist 3.25   0
+protocols.cluster: hist 3.5   0
+protocols.cluster: hist 3.75   0
+protocols.cluster: hist 4   0
+protocols.cluster: hist 4.25   0
+protocols.cluster: hist 4.5   0
+protocols.cluster: hist 4.75   0
+protocols.cluster: hist 5   0
+protocols.cluster: hist 5.25   0
+protocols.cluster: hist 5.5   0
+protocols.cluster: hist 5.75   0
+protocols.cluster: hist 6   0
+protocols.cluster: hist 6.25   0
+protocols.cluster: hist 6.5   0
+protocols.cluster: hist 6.75   0
+protocols.cluster: hist 7   0
+protocols.cluster: hist 7.25   0
+protocols.cluster: hist 7.5   0
+protocols.cluster: hist 7.75   0
+protocols.cluster: hist 8   0
+protocols.cluster: hist 8.25   0
+protocols.cluster: hist 8.5   0
+protocols.cluster: hist 8.75   0
+protocols.cluster: hist 9   0
+protocols.cluster: hist 9.25   0
+protocols.cluster: hist 9.5   0
+protocols.cluster: hist 9.75   0
+protocols.cluster: hist 10   0
+protocols.cluster: hist 10.25   0
+protocols.cluster: hist 10.5   0
+protocols.cluster: hist 10.75   0
+protocols.cluster: hist 11   0
+protocols.cluster: hist 11.25   0
+protocols.cluster: hist 11.5   0
+protocols.cluster: hist 11.75   0
+protocols.cluster: hist 12   0
+protocols.cluster: hist 12.25   0
+protocols.cluster: hist 12.5   0
+protocols.cluster: hist 12.75   0
+protocols.cluster: hist 13   0
+protocols.cluster: hist 13.25   0
+protocols.cluster: hist 13.5   0
+protocols.cluster: hist 13.75   0
+protocols.cluster: hist 14   0
+protocols.cluster: hist 14.25   0
+protocols.cluster: hist 14.5   0
+protocols.cluster: hist 14.75   0
+protocols.cluster: hist 15   0
+protocols.cluster: hist 15.25   0
+protocols.cluster: hist 15.5   0
+protocols.cluster: hist 15.75   0
+protocols.cluster: hist 16   0
+protocols.cluster: hist 16.25   0
+protocols.cluster: hist 16.5   0
+protocols.cluster: hist 16.75   0
+protocols.cluster: hist 17   0
+protocols.cluster: hist 17.25   0
+protocols.cluster: hist 17.5   0
+protocols.cluster: hist 17.75   0
+protocols.cluster: hist 18   0
+protocols.cluster: hist 18.25   0
+protocols.cluster: hist 18.5   0
+protocols.cluster: hist 18.75   0
+protocols.cluster: hist 19   0
+protocols.cluster: hist 19.25   0
+protocols.cluster: hist 19.5   0
+protocols.cluster: hist 19.75   0
+protocols.cluster: Median RMS 0.25
+protocols.cluster: Clustering of 30structures with radius 0.3
+protocols.cluster: Assigning initial cluster centres 
+protocols.cluster: .protocols.cluster: 
+protocols.cluster: Redistributing groups ...18 cluster centersSwitched 9<--2
+Assigning extra structures ... 
+protocols.cluster: ---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 8GN: 9   c.0.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0009  -542.674
+protocols.cluster:     2qyj.clean_0001_0012  -544.64
+protocols.cluster:     2qyj.clean_0001_0015  -543.669
+protocols.cluster:     2qyj.clean_0001_0016  -549.836
+protocols.cluster:     2qyj.clean_0001_0017  -539.599
+protocols.cluster:     2qyj.clean_0001_0023  -541.618
+protocols.cluster:     2qyj.clean_0001_0026  -540.476
+protocols.cluster:     2qyj.clean_0001_0028  -544.192
+protocols.cluster: Cluster:  1  N: 4GN: 5   c.1.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0010  -543.224
+protocols.cluster:     2qyj.clean_0001_0011  -543.616
+protocols.cluster:     2qyj.clean_0001_0029  -544.343
+protocols.cluster:     2qyj.clean_0001_0030  -546.235
+protocols.cluster: Cluster:  2  N: 2GN: 3   c.2.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0004  -542.255
+protocols.cluster:     2qyj.clean_0001_0024  -546.667
+protocols.cluster: Cluster:  3  N: 1GN: 2   c.3.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0001  -539.739
+protocols.cluster: Cluster:  4  N: 1GN: 2   c.4.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0002  -546.475
+protocols.cluster: Cluster:  5  N: 1GN: 2   c.5.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0003  -539.143
+protocols.cluster: Cluster:  6  N: 1GN: 2   c.6.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0005  -541.293
+protocols.cluster: Cluster:  7  N: 1GN: 2   c.7.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0006  -538.186
+protocols.cluster: Cluster:  8  N: 1GN: 2   c.8.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0007  -543.077
+protocols.cluster: Cluster:  9  N: 2GN: 3   c.9.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0008  -542.17
+protocols.cluster:     2qyj.clean_0001_0022  -547.261
+protocols.cluster: Cluster:  10  N: 1GN: 2   c.10.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0013  -546.138
+protocols.cluster: Cluster:  11  N: 1GN: 2   c.11.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0014  -548.117
+protocols.cluster: Cluster:  12  N: 1GN: 2   c.12.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0018  -545.777
+protocols.cluster: Cluster:  13  N: 1GN: 2   c.13.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0019  -537.673
+protocols.cluster: Cluster:  14  N: 1GN: 2   c.14.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0020  -541.351
+protocols.cluster: Cluster:  15  N: 1GN: 2   c.15.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0021  -539.381
+protocols.cluster: Cluster:  16  N: 1GN: 2   c.16.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0025  -541.614
+protocols.cluster: Cluster:  17  N: 1GN: 2   c.17.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0027  -538.663
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 18
+protocols.cluster:   Structures: 30
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: ---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 8GN: 9   c.0.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0009  -542.674
+protocols.cluster:     2qyj.clean_0001_0012  -544.64
+protocols.cluster:     2qyj.clean_0001_0015  -543.669
+protocols.cluster:     2qyj.clean_0001_0016  -549.836
+protocols.cluster:     2qyj.clean_0001_0017  -539.599
+protocols.cluster:     2qyj.clean_0001_0023  -541.618
+protocols.cluster:     2qyj.clean_0001_0026  -540.476
+protocols.cluster:     2qyj.clean_0001_0028  -544.192
+protocols.cluster: Cluster:  1  N: 4GN: 5   c.1.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0010  -543.224
+protocols.cluster:     2qyj.clean_0001_0011  -543.616
+protocols.cluster:     2qyj.clean_0001_0029  -544.343
+protocols.cluster:     2qyj.clean_0001_0030  -546.235
+protocols.cluster: Cluster:  2  N: 2GN: 3   c.2.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0004  -542.255
+protocols.cluster:     2qyj.clean_0001_0024  -546.667
+protocols.cluster: Cluster:  3  N: 1GN: 2   c.3.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0001  -539.739
+protocols.cluster: Cluster:  4  N: 1GN: 2   c.4.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0002  -546.475
+protocols.cluster: Cluster:  5  N: 1GN: 2   c.5.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0003  -539.143
+protocols.cluster: Cluster:  6  N: 1GN: 2   c.6.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0005  -541.293
+protocols.cluster: Cluster:  7  N: 1GN: 2   c.7.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0006  -538.186
+protocols.cluster: Cluster:  8  N: 1GN: 2   c.8.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0007  -543.077
+protocols.cluster: Cluster:  9  N: 2GN: 3   c.9.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0008  -542.17
+protocols.cluster:     2qyj.clean_0001_0022  -547.261
+protocols.cluster: Cluster:  10  N: 1GN: 2   c.10.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0013  -546.138
+protocols.cluster: Cluster:  11  N: 1GN: 2   c.11.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0014  -548.117
+protocols.cluster: Cluster:  12  N: 1GN: 2   c.12.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0018  -545.777
+protocols.cluster: Cluster:  13  N: 1GN: 2   c.13.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0019  -537.673
+protocols.cluster: Cluster:  14  N: 1GN: 2   c.14.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0020  -541.351
+protocols.cluster: Cluster:  15  N: 1GN: 2   c.15.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0021  -539.381
+protocols.cluster: Cluster:  16  N: 1GN: 2   c.16.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0025  -541.614
+protocols.cluster: Cluster:  17  N: 1GN: 2   c.17.*.pdb 
+protocols.cluster:     2qyj.clean_0001_0027  -538.663
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 18
+protocols.cluster:   Structures: 30
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: 8 2qyj.clean_0001_0009  0  0
+protocols.cluster: 11 2qyj.clean_0001_0012  0  1
+protocols.cluster: 14 2qyj.clean_0001_0015  0  2
+protocols.cluster: 15 2qyj.clean_0001_0016  0  3
+protocols.cluster: 16 2qyj.clean_0001_0017  0  4
+protocols.cluster: 22 2qyj.clean_0001_0023  0  5
+protocols.cluster: 25 2qyj.clean_0001_0026  0  6
+protocols.cluster: 27 2qyj.clean_0001_0028  0  7
+protocols.cluster: 9 2qyj.clean_0001_0010  1  0
+protocols.cluster: 10 2qyj.clean_0001_0011  1  1
+protocols.cluster: 28 2qyj.clean_0001_0029  1  2
+protocols.cluster: 29 2qyj.clean_0001_0030  1  3
+protocols.cluster: 3 2qyj.clean_0001_0004  2  0
+protocols.cluster: 23 2qyj.clean_0001_0024  2  1
+protocols.cluster: 0 2qyj.clean_0001_0001  3  0
+protocols.cluster: 1 2qyj.clean_0001_0002  4  0
+protocols.cluster: 2 2qyj.clean_0001_0003  5  0
+protocols.cluster: 4 2qyj.clean_0001_0005  6  0
+protocols.cluster: 5 2qyj.clean_0001_0006  7  0
+protocols.cluster: 6 2qyj.clean_0001_0007  8  0
+protocols.cluster: 7 2qyj.clean_0001_0008  9  0
+protocols.cluster: 21 2qyj.clean_0001_0022  9  1
+protocols.cluster: 12 2qyj.clean_0001_0013  10  0
+protocols.cluster: 13 2qyj.clean_0001_0014  11  0
+protocols.cluster: 17 2qyj.clean_0001_0018  12  0
+protocols.cluster: 18 2qyj.clean_0001_0019  13  0
+protocols.cluster: 19 2qyj.clean_0001_0020  14  0
+protocols.cluster: 20 2qyj.clean_0001_0021  15  0
+protocols.cluster: 24 2qyj.clean_0001_0025  16  0
+protocols.cluster: 26 2qyj.clean_0001_0027  17  0
+Timing: 
+  Readin:51s
+  Cluster: 1s
+  Additional Clustering: 0s
+  Total: 52

@@ -1,0 +1,6 @@
+#~/<rosetta_directory>/main/source/bin/cluster.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags_cluster
+
+-in:file:l files.txt
+-in:file:fullatom
+-cluster:radius 2
+-run:shuffle

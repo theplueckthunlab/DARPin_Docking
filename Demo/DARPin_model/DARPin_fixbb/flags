@@ -1,0 +1,10 @@
+#~/<rosetta_directory>/main/source/bin/fixbb.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./2qyj.clean.pdb
+-out:path:all ./rosetta_output
+-resfile 2qyj.resfile
+-use_input_sc
+-ex1
+-ex2
+-minimize_sidechains
+-nstruct 1

@@ -1,0 +1,5 @@
+#~/<rosetta_directory>/main/source/bin/docking_prepack_protocol.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:l ./files.txt
+-out:path:all ./rosetta_output
+-docking:partners A_D

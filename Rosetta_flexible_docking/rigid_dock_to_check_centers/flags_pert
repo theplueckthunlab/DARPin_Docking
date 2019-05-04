@@ -1,0 +1,12 @@
+#~/<rosetta_directory>/main/source/bin/docking_protocol.linuxgccrelease -database ~/<path_to_rosetta>/main/database @flags_pert
+
+-in:file:s ./<name>.pdb
+-nstruct 1
+-use_input_sc
+-partners A_D #check chains
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+SiteConstraint CA 52D A SIGMOID 8.0 -2.0
+SiteConstraint CA 56D A SIGMOID 8.0 -2.0
+SiteConstraint CA 85D A SIGMOID 8.0 -2.0
+SiteConstraint CA 89D A SIGMOID 8.0 -2.0
+SiteConstraint CA 118D A SIGMOID 8.0 -2.0 #remove for N2C
+SiteConstraint CA 122D A SIGMOID 8.0 -2.0 #remove for N2C
+
+KofNConstraint 1
+SiteConstraint CA 34D A SIGMOID 8.0 2.0
+SiteConstraint CA 67D A SIGMOID 8.0 2.0
+SiteConstraint CA 100D A SIGMOID 8.0 2.0 #remove for N2C
+END
+
+KofNConstraint 1
+SiteConstraint CA 44D A SIGMOID 8.0 2.0
+SiteConstraint CA 77D A SIGMOID 8.0 2.0
+SiteConstraint CA 110D A SIGMOID 8.0 2.0 #remove for N2C
+END

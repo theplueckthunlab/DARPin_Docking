@@ -1,0 +1,9 @@
+#mpiexec -np <no_cores> ~/<rosetta_directory>/main/source/bin/relax.mpi.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./2qyj.clean_0001.pdb #output of fixbb
+-in:file:fullatom
+-out:path:all ./rosetta_output
+-out:file:scorefile relax_output.sc
+-out:file:silent relax_output.out
+-nstruct 40
+-relax:thorough

@@ -1,0 +1,421 @@
+PyMOL>run pymol_rmsf.py
+PyMOL>fit_unbound 4obe_A.clean_0001, 250, 1-169
+ ExecutiveRMS: RMS =    0.156 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.192 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.107 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.282 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.170 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.187 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.145 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.165 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.147 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.163 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.178 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.232 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.208 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.141 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.102 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.165 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.175 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.161 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.128 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.157 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.189 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.200 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.179 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.215 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.208 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.136 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.198 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.143 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.142 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.201 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.212 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.141 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.114 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.211 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.209 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.220 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.215 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.097 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.207 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.173 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.187 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.225 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.216 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.087 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.189 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.132 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.223 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.209 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.250 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.118 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.243 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.138 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.160 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.129 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.216 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.239 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.280 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.178 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.188 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.118 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.188 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.229 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.118 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.263 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.203 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.151 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.170 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.161 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.183 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.191 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.146 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.191 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.220 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.217 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.228 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.156 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.133 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.183 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.183 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.182 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.181 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.281 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.168 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.119 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.159 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.183 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.226 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.227 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.191 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.178 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.253 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.167 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.160 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.182 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.190 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.163 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.240 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.171 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.203 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.101 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.229 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.169 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.123 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.223 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.212 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.115 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.188 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.213 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.156 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.187 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.141 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.139 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.123 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.198 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.194 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.205 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.172 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.099 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.119 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.222 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.178 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.130 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.154 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.160 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.184 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.112 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.271 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.141 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.234 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.127 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.212 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.204 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.202 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.150 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.114 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.236 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.154 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.162 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.229 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.151 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.208 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.143 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.210 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.200 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.107 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.237 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.220 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.148 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.160 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.162 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.228 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.242 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.156 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.191 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.177 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.118 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.214 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.137 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.177 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.179 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.148 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.179 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.225 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.153 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.209 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.185 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.206 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.174 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.278 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.117 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.116 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.161 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.139 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.210 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.154 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.173 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.202 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.196 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.123 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.202 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.134 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.220 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.152 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.204 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.171 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.201 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.251 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.169 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.260 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.228 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.228 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.202 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.093 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.162 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.164 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.120 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.278 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.236 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.163 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.133 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.220 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.160 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.175 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.246 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.143 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.146 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.226 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.205 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.163 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.138 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.151 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.278 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.138 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.168 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.209 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.124 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.165 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.209 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.173 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.134 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.186 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.264 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.180 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.158 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.230 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.167 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.136 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.191 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.197 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.223 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.151 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.159 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.167 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.270 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.194 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.249 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.154 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.199 (169 to 169 atoms)
+ ExecutiveRMS: RMS =    0.264 (169 to 169 atoms)
+PyMOL>dev_fragment 4obe_A.clean_0001, 250, 3, 1, A, 169
+Fragment: 1-3 RMSF: 0.0455808529737
+Fragment: 2-4 RMSF: 0.0477931688283
+Fragment: 3-5 RMSF: 0.0416688090581
+Fragment: 4-6 RMSF: 0.0317404535489
+Fragment: 5-7 RMSF: 0.030674880119
+Fragment: 6-8 RMSF: 0.030528343492
+Fragment: 7-9 RMSF: 0.0398246503849
+Fragment: 8-10 RMSF: 0.0589933518799
+Fragment: 9-11 RMSF: 0.0788206403899
+Fragment: 10-12 RMSF: 0.0923175197127
+Fragment: 11-13 RMSF: 0.0979469854244
+Fragment: 12-14 RMSF: 0.0959460587256
+Fragment: 13-15 RMSF: 0.0879691578327
+Fragment: 14-16 RMSF: 0.0721558240404
+Fragment: 15-17 RMSF: 0.0593891425745
+Fragment: 16-18 RMSF: 0.0530265273074
+Fragment: 17-19 RMSF: 0.0513375567788
+Fragment: 18-20 RMSF: 0.0556146698167
+Fragment: 19-21 RMSF: 0.0565838985626
+Fragment: 20-22 RMSF: 0.0525555123836
+Fragment: 21-23 RMSF: 0.0491820930711
+Fragment: 22-24 RMSF: 0.0555374213747
+Fragment: 23-25 RMSF: 0.072096163842
+Fragment: 24-26 RMSF: 0.0860826805815
+Fragment: 25-27 RMSF: 0.0922554722252
+Fragment: 26-28 RMSF: 0.0905696940555
+Fragment: 27-29 RMSF: 0.0876879663744
+Fragment: 28-30 RMSF: 0.136879315692
+Fragment: 29-31 RMSF: 0.176861312002
+Fragment: 30-32 RMSF: 0.181498133535
+Fragment: 31-33 RMSF: 0.16072535817
+Fragment: 32-34 RMSF: 0.184009133572
+Fragment: 33-35 RMSF: 0.203591029035
+Fragment: 34-36 RMSF: 0.190715454914
+Fragment: 35-37 RMSF: 0.124497186115
+Fragment: 36-38 RMSF: 0.0770727492862
+Fragment: 37-39 RMSF: 0.0612757682261
+Fragment: 38-40 RMSF: 0.0508912756064
+Fragment: 39-41 RMSF: 0.0484021210489
+Fragment: 40-42 RMSF: 0.0539842181402
+Fragment: 41-43 RMSF: 0.0606676336813
+Fragment: 42-44 RMSF: 0.0716471754697
+Fragment: 43-45 RMSF: 0.0925614724492
+Fragment: 44-46 RMSF: 0.12683696756
+Fragment: 45-47 RMSF: 0.174074052184
+Fragment: 46-48 RMSF: 0.194017341809
+Fragment: 47-49 RMSF: 0.179099464929
+Fragment: 48-50 RMSF: 0.134400304578
+Fragment: 49-51 RMSF: 0.0815841054654
+Fragment: 50-52 RMSF: 0.0541999463665
+Fragment: 51-53 RMSF: 0.0394565831835
+Fragment: 52-54 RMSF: 0.039611809241
+Fragment: 53-55 RMSF: 0.0362548800072
+Fragment: 54-56 RMSF: 0.0354686772384
+Fragment: 55-57 RMSF: 0.0416548560034
+Fragment: 56-58 RMSF: 0.0536082656982
+Fragment: 57-59 RMSF: 0.0881004377142
+Fragment: 58-60 RMSF: 0.122846754805
+Fragment: 59-61 RMSF: 0.170025635728
+Fragment: 60-62 RMSF: 0.186513362394
+Fragment: 61-63 RMSF: 0.24756121381
+Fragment: 62-64 RMSF: 0.257721216929
+Fragment: 63-65 RMSF: 0.256555902525
+Fragment: 64-66 RMSF: 0.204833065603
+Fragment: 65-67 RMSF: 0.160038477832
+Fragment: 66-68 RMSF: 0.128496192502
+Fragment: 67-69 RMSF: 0.105395750869
+Fragment: 68-70 RMSF: 0.103170413794
+Fragment: 69-71 RMSF: 0.101766670845
+Fragment: 70-72 RMSF: 0.106160814008
+Fragment: 71-73 RMSF: 0.103477977532
+Fragment: 72-74 RMSF: 0.0952708727259
+Fragment: 73-75 RMSF: 0.0915978887457
+Fragment: 74-76 RMSF: 0.0819119753032
+Fragment: 75-77 RMSF: 0.0687859275494
+Fragment: 76-78 RMSF: 0.0572739807509
+Fragment: 77-79 RMSF: 0.0428288732522
+Fragment: 78-80 RMSF: 0.0377820050089
+Fragment: 79-81 RMSF: 0.0355710879687
+Fragment: 80-82 RMSF: 0.0378630996295
+Fragment: 81-83 RMSF: 0.0415305644941
+Fragment: 82-84 RMSF: 0.0475181268997
+Fragment: 83-85 RMSF: 0.0570832353895
+Fragment: 84-86 RMSF: 0.0641555605172
+Fragment: 85-87 RMSF: 0.0720757637941
+Fragment: 86-88 RMSF: 0.0791710153358
+Fragment: 87-89 RMSF: 0.0777636306011
+Fragment: 88-90 RMSF: 0.0672596163642
+Fragment: 89-91 RMSF: 0.0601589305516
+Fragment: 90-92 RMSF: 0.0641282791277
+Fragment: 91-93 RMSF: 0.0638309340415
+Fragment: 92-94 RMSF: 0.0615671976346
+Fragment: 93-95 RMSF: 0.070224766223
+Fragment: 94-96 RMSF: 0.0745259639622
+Fragment: 95-97 RMSF: 0.0651451920427
+Fragment: 96-98 RMSF: 0.0665841510207
+Fragment: 97-99 RMSF: 0.0927835484587
+Fragment: 98-100 RMSF: 0.104768023781
+Fragment: 99-101 RMSF: 0.0975232248085
+Fragment: 100-102 RMSF: 0.0904649161566
+Fragment: 101-103 RMSF: 0.108090081031
+Fragment: 102-104 RMSF: 0.121351293425
+Fragment: 103-105 RMSF: 0.11455299973
+Fragment: 104-106 RMSF: 0.0954275204556
+Fragment: 105-107 RMSF: 0.0839497330659
+Fragment: 106-108 RMSF: 0.0744704166005
+Fragment: 107-109 RMSF: 0.0659068194981
+Fragment: 108-110 RMSF: 0.0535185703471
+Fragment: 109-111 RMSF: 0.0426186380144
+Fragment: 110-112 RMSF: 0.0399995954626
+Fragment: 111-113 RMSF: 0.0334491222706
+Fragment: 112-114 RMSF: 0.0328466874448
+Fragment: 113-115 RMSF: 0.0377013090307
+Fragment: 114-116 RMSF: 0.0385106967733
+Fragment: 115-117 RMSF: 0.0466888554403
+Fragment: 116-118 RMSF: 0.0661648926478
+Fragment: 117-119 RMSF: 0.0978922080134
+Fragment: 118-120 RMSF: 0.114122555862
+Fragment: 119-121 RMSF: 0.125097651095
+Fragment: 120-122 RMSF: 0.140197275317
+Fragment: 121-123 RMSF: 0.132671391347
+Fragment: 122-124 RMSF: 0.10557683113
+Fragment: 123-125 RMSF: 0.0732258744183
+Fragment: 124-126 RMSF: 0.0704706002044
+Fragment: 125-127 RMSF: 0.0669261642315
+Fragment: 126-128 RMSF: 0.0818051858002
+Fragment: 127-129 RMSF: 0.0878830127941
+Fragment: 128-130 RMSF: 0.0847496013708
+Fragment: 129-131 RMSF: 0.0727297693203
+Fragment: 130-132 RMSF: 0.0632168478789
+Fragment: 131-133 RMSF: 0.0614052540804
+Fragment: 132-134 RMSF: 0.0606814178632
+Fragment: 133-135 RMSF: 0.0662860653836
+Fragment: 134-136 RMSF: 0.0729459569756
+Fragment: 135-137 RMSF: 0.0757910778124
+Fragment: 136-138 RMSF: 0.0849993537865
+Fragment: 137-139 RMSF: 0.0826967161006
+Fragment: 138-140 RMSF: 0.0863088437639
+Fragment: 139-141 RMSF: 0.0673100308598
+Fragment: 140-142 RMSF: 0.0568648844926
+Fragment: 141-143 RMSF: 0.0480004093223
+Fragment: 142-144 RMSF: 0.0451415858574
+Fragment: 143-145 RMSF: 0.0451874073962
+Fragment: 144-146 RMSF: 0.0568976994931
+Fragment: 145-147 RMSF: 0.0689632363808
+Fragment: 146-148 RMSF: 0.0791785191674
+Fragment: 147-149 RMSF: 0.0793765403724
+Fragment: 148-150 RMSF: 0.0735156890362
+Fragment: 149-151 RMSF: 0.0637223331924
+Fragment: 150-152 RMSF: 0.0604142352063
+Fragment: 151-153 RMSF: 0.0647840613692
+Fragment: 152-154 RMSF: 0.0718543440658
+Fragment: 153-155 RMSF: 0.0770531599312
+Fragment: 154-156 RMSF: 0.0680672474616
+Fragment: 155-157 RMSF: 0.0739547261956
+Fragment: 156-158 RMSF: 0.0816430640768
+Fragment: 157-159 RMSF: 0.0767505230217
+Fragment: 158-160 RMSF: 0.0628558473358
+Fragment: 159-161 RMSF: 0.0621361294187
+Fragment: 160-162 RMSF: 0.0621205038825
+Fragment: 161-163 RMSF: 0.0575557955653
+Fragment: 162-164 RMSF: 0.0585646087247
+Fragment: 163-165 RMSF: 0.0633764435495
+Fragment: 164-166 RMSF: 0.0666408257053
+Fragment: 165-167 RMSF: 0.0658086185619
+Fragment: 166-168 RMSF: 0.060838657921
+Fragment: 167-169 RMSF: 0.0517402228865
+Dev_fragment took 23401.938 seconds

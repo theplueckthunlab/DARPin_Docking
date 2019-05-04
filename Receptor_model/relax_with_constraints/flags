@@ -1,0 +1,16 @@
+#~/<rosetta_directory>/main/source/bin/relax.linuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./<receptor>.clean.pdb
+-in:file:fullatom
+-out:path:all ./rosetta_output
+-out:file:scorefile output.sc
+-nstruct 1
+-ex1
+-ex2
+-use_input_sc
+-flip_HNQ
+-no_optH false
+-relax:constrain_relax_to_start_coords
+-relax:coord_constrain_sidechains
+-relax:ramp_constraints false
+-ignore_zero_occupancy false

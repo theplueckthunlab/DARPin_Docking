@@ -1,0 +1,316 @@
+core.init: Rosetta version rosetta.source.release-156:b1dc16ff17da7a38b52c000abb74f85e4f0333c8 2017-10-27 12:03:34.443146 from http://www.rosettacommons.org
+core.init: command: /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/source/bin/cluster.linuxgccrelease -database /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database @flags_cluster
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=1528446050 seed_offset=0 real_seed=1528446050
+core.init.random: RandomGenerator:init: Normal mode, seed=1528446050 RG_type=mt19937
+
+
+
+ Rosetta Tool:  cluster - clustering tool for PDBs and or silent files 
+ Usage:                                                                  
+   PDB input:      -in:file:s *.pdb   or  
+                   -in:file:l  list_of_pdbs  
+                   -no_optH                                    Dont change positions of Hydrogen atoms! 
+   Silent input:   -in:file:silent silent.out                  silent input filesname 
+                   -in:file:s                                  specify specific tags to be extracted, if left out all will be taken 
+                   -in:file:fullatom                           for full atom structures 
+                   -in:file:silent_struct_type <type>          specify the input silent-file format 
+   Native:         -in:file:native                             native PDB if CaRMS is required 
+   Scorefunction:  -score:weights  weights                     weight set or weights file 
+                   -score:patch  patch                         patch set 
+                   -rescore:verbose                            display score breakdown 
+                   -rescore:output_only                        don't rescore 
+   Output:         -nooutput                                   don't print PDB structures 
+                   -out:prefix  myprefix                       prefix the output structures with a string 
+   Clustering:     -cluster:radius  <float>                    Cluster radius in A (for RMS clustering) or in inverse GDT_TS for GDT clustering. Use "-1" to trigger automatic radius detection
+                   -cluster:gdtmm                              Cluster by gdtmm instead of rms
+                   -cluster:input_score_filter  <float>        Ignore structures above certain energy 
+                   -cluster:exclude_res <int> [<int> <int> ..] Exclude residue numbers               
+                   -cluster:radius        <float>              Cluster radius
+                   -cluster:limit_cluster_size      <int>      Maximal cluster size
+                   -cluster:limit_cluster_size_percent <float> Maximal cluster size by percentage
+                   -cluster:random_limit_cluster_size_percent <float> Maximal cluster size by percentage, cut randomly
+                   -cluster:limit_clusters          <int>      Maximal number of clusters
+                   -cluster:limit_total_structures  <int>      Maximal number of structures in total
+                   -cluster:sort_groups_by_energy              Sort clusters by energy.
+                   -cluster:remove_highest_energy_member       Remove highest energy member of each cluster
+                   -symmetry:symmetric_rmsd       						 For symmetric systems find the lowest rms by testing all chain combinations. Works only with silent file input that contain symmetry info and with all CA rmsd
+ Examples: 
+   cluster -database ~/minirosetta_database -in:file:silent silent.out -in::file::binary_silentfile -in::file::fullatom -native 1a19.pdb 
+clustered Poses are given output names in the form of:
+ c.i.j, which denotes the jth member of the ith cluster.
+
+
+
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 569 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.495031 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m0.pdb' automatically determined to be of type PDB
+basic.io.database: Database file opened: scoring/score_functions/elec_cp_reps.dat
+core.scoring.elec.util: Read 40 countpair representative atoms
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib_fixes_enable option is true.
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.
+core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.430054 seconds to load from binary
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m0.pdb
+protocols.cluster: Adding struc: 3339.67
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m10.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m10.pdb
+protocols.cluster: Adding struc: 7141.35
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m11.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m11.pdb
+protocols.cluster: Adding struc: 5099.4
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m12.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m12.pdb
+protocols.cluster: Adding struc: 3167.6
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m13.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m13.pdb
+protocols.cluster: Adding struc: 3468.54
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m14.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m14.pdb
+protocols.cluster: Adding struc: 8629.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m15.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m15.pdb
+protocols.cluster: Adding struc: 6741.77
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m16.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m16.pdb
+protocols.cluster: Adding struc: 4659.24
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m17.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m17.pdb
+protocols.cluster: Adding struc: 5344.58
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m18.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m18.pdb
+protocols.cluster: Adding struc: 2253.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m19.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m19.pdb
+protocols.cluster: Adding struc: 2995.57
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m1.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m1.pdb
+protocols.cluster: Adding struc: 2220
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m20.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m20.pdb
+protocols.cluster: Adding struc: 5351.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m21.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m21.pdb
+protocols.cluster: Adding struc: 5064.92
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m2.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m2.pdb
+protocols.cluster: Adding struc: 4419.25
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m3.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m3.pdb
+protocols.cluster: Adding struc: 5760.76
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m4.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m4.pdb
+protocols.cluster: Adding struc: 2433.79
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m5.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m5.pdb
+protocols.cluster: Adding struc: 7689.05
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m6.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m6.pdb
+protocols.cluster: Adding struc: 3442.33
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m7.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m7.pdb
+protocols.cluster: Adding struc: 4690.63
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m8.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m8.pdb
+protocols.cluster: Adding struc: 4752.22
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m9.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m9.pdb
+protocols.cluster: Adding struc: 4641.45
+protocols.cluster: Clustering an initial set of 22 structures 
+protocols.cluster: Calculating RMS matrix: 
+protocols.cluster: Histogram of pairwise similarity values for the initial clustering set
+protocols.cluster: hist 0   1
+protocols.cluster: hist 0.25   29
+protocols.cluster: hist 0.5   41
+protocols.cluster: hist 0.75   57
+protocols.cluster: hist 1   20
+protocols.cluster: hist 1.25   5
+protocols.cluster: hist 1.5   2
+protocols.cluster: hist 1.75   5
+protocols.cluster: hist 2   16
+protocols.cluster: hist 2.25   23
+protocols.cluster: hist 2.5   3
+protocols.cluster: hist 2.75   5
+protocols.cluster: hist 3   1
+protocols.cluster: hist 3.25   1
+protocols.cluster: hist 3.5   0
+protocols.cluster: hist 3.75   1
+protocols.cluster: hist 4   2
+protocols.cluster: hist 4.25   7
+protocols.cluster: hist 4.5   7
+protocols.cluster: hist 4.75   2
+protocols.cluster: hist 5   1
+protocols.cluster: hist 5.25   0
+protocols.cluster: hist 5.5   0
+protocols.cluster: hist 5.75   1
+protocols.cluster: hist 6   1
+protocols.cluster: hist 6.25   0
+protocols.cluster: hist 6.5   0
+protocols.cluster: hist 6.75   0
+protocols.cluster: hist 7   0
+protocols.cluster: hist 7.25   0
+protocols.cluster: hist 7.5   0
+protocols.cluster: hist 7.75   0
+protocols.cluster: hist 8   0
+protocols.cluster: hist 8.25   0
+protocols.cluster: hist 8.5   0
+protocols.cluster: hist 8.75   0
+protocols.cluster: hist 9   0
+protocols.cluster: hist 9.25   0
+protocols.cluster: hist 9.5   0
+protocols.cluster: hist 9.75   0
+protocols.cluster: hist 10   0
+protocols.cluster: hist 10.25   0
+protocols.cluster: hist 10.5   0
+protocols.cluster: hist 10.75   0
+protocols.cluster: hist 11   0
+protocols.cluster: hist 11.25   0
+protocols.cluster: hist 11.5   0
+protocols.cluster: hist 11.75   0
+protocols.cluster: hist 12   0
+protocols.cluster: hist 12.25   0
+protocols.cluster: hist 12.5   0
+protocols.cluster: hist 12.75   0
+protocols.cluster: hist 13   0
+protocols.cluster: hist 13.25   0
+protocols.cluster: hist 13.5   0
+protocols.cluster: hist 13.75   0
+protocols.cluster: hist 14   0
+protocols.cluster: hist 14.25   0
+protocols.cluster: hist 14.5   0
+protocols.cluster: hist 14.75   0
+protocols.cluster: hist 15   0
+protocols.cluster: hist 15.25   0
+protocols.cluster: hist 15.5   0
+protocols.cluster: hist 15.75   0
+protocols.cluster: hist 16   0
+protocols.cluster: hist 16.25   0
+protocols.cluster: hist 16.5   0
+protocols.cluster: hist 16.75   0
+protocols.cluster: hist 17   0
+protocols.cluster: hist 17.25   0
+protocols.cluster: hist 17.5   0
+protocols.cluster: hist 17.75   0
+protocols.cluster: hist 18   0
+protocols.cluster: hist 18.25   0
+protocols.cluster: hist 18.5   0
+protocols.cluster: hist 18.75   0
+protocols.cluster: hist 19   0
+protocols.cluster: hist 19.25   0
+protocols.cluster: hist 19.5   0
+protocols.cluster: hist 19.75   0
+protocols.cluster: Median RMS 0.75
+protocols.cluster: Clustering of 22structures with radius 2
+protocols.cluster: Assigning initial cluster centres 
+protocols.cluster: 
+Assigning extra structures ... 
+protocols.cluster: Redistributing groups ...4 cluster centers---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 19GN: 20   c.0.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m10.pdb  7141.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m11.pdb  5099.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m12.pdb  3167.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m13.pdb  3468.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m14.pdb  8629.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m15.pdb  6741.77
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m16.pdb  4659.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m17.pdb  5344.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m18.pdb  2253.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m19.pdb  2995.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m20.pdb  5351.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m21.pdb  5064.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m2.pdb  4419.25
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m3.pdb  5760.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m4.pdb  2433.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m5.pdb  7689.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m7.pdb  4690.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m8.pdb  4752.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m9.pdb  4641.45
+protocols.cluster: Cluster:  1  N: 1GN: 2   c.1.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m0.pdb  3339.67
+protocols.cluster: Cluster:  2  N: 1GN: 2   c.2.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m1.pdb  2220
+protocols.cluster: Cluster:  3  N: 1GN: 2   c.3.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m6.pdb  3442.33
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 4
+protocols.cluster:   Structures: 22
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: ---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 19GN: 20   c.0.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m10.pdb  7141.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m11.pdb  5099.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m12.pdb  3167.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m13.pdb  3468.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m14.pdb  8629.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m15.pdb  6741.77
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m16.pdb  4659.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m17.pdb  5344.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m18.pdb  2253.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m19.pdb  2995.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m20.pdb  5351.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m21.pdb  5064.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m2.pdb  4419.25
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m3.pdb  5760.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m4.pdb  2433.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m5.pdb  7689.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m7.pdb  4690.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m8.pdb  4752.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m9.pdb  4641.45
+protocols.cluster: Cluster:  1  N: 1GN: 2   c.1.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m0.pdb  3339.67
+protocols.cluster: Cluster:  2  N: 1GN: 2   c.2.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m1.pdb  2220
+protocols.cluster: Cluster:  3  N: 1GN: 2   c.3.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m6.pdb  3442.33
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 4
+protocols.cluster:   Structures: 22
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: 1 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m10.pdb  0  0
+protocols.cluster: 2 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m11.pdb  0  1
+protocols.cluster: 3 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m12.pdb  0  2
+protocols.cluster: 4 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m13.pdb  0  3
+protocols.cluster: 5 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m14.pdb  0  4
+protocols.cluster: 6 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m15.pdb  0  5
+protocols.cluster: 7 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m16.pdb  0  6
+protocols.cluster: 8 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m17.pdb  0  7
+protocols.cluster: 9 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m18.pdb  0  8
+protocols.cluster: 10 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m19.pdb  0  9
+protocols.cluster: 12 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m20.pdb  0  10
+protocols.cluster: 13 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m21.pdb  0  11
+protocols.cluster: 14 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m2.pdb  0  12
+protocols.cluster: 15 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m3.pdb  0  13
+protocols.cluster: 16 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m4.pdb  0  14
+protocols.cluster: 17 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m5.pdb  0  15
+protocols.cluster: 19 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m7.pdb  0  16
+protocols.cluster: 20 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m8.pdb  0  17
+protocols.cluster: 21 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m9.pdb  0  18
+protocols.cluster: 0 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m0.pdb  1  0
+protocols.cluster: 11 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m1.pdb  2  0
+protocols.cluster: 18 /home/ubuntu/Demo2/ClusPro/sequential_clustering/c.2_cluster2A/m6.pdb  3  0
+Timing: 
+  Readin:21s
+  Cluster: 0s
+  Additional Clustering: 0s
+  Total: 21

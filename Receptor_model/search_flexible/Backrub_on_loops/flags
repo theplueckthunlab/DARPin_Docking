@@ -1,0 +1,8 @@
+#mpiexec -np <no_cores> ~/<rosetta_directory>/main/source/bin/backrub.mpilinuxgccrelease -database ~/<rosetta_directory>/main/database @flags
+
+-in:file:s ./<receptor>.clean_0001.pdb #relaxed receptor
+-in:file:fullatom
+-out:file:scorefile <receptor>.backrub_loop.sc
+-nstruct 20
+-backrub:ntrials 10000
+-pivot_residues <flexible_residues> #as indicated by pymol script

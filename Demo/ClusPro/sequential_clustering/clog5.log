@@ -1,0 +1,1445 @@
+core.init: Rosetta version rosetta.source.release-156:b1dc16ff17da7a38b52c000abb74f85e4f0333c8 2017-10-27 12:03:34.443146 from http://www.rosettacommons.org
+core.init: command: /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/source/bin/cluster.linuxgccrelease -database /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database @flags_cluster
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=614993385 seed_offset=0 real_seed=614993385
+core.init.random: RandomGenerator:init: Normal mode, seed=614993385 RG_type=mt19937
+
+
+
+ Rosetta Tool:  cluster - clustering tool for PDBs and or silent files 
+ Usage:                                                                  
+   PDB input:      -in:file:s *.pdb   or  
+                   -in:file:l  list_of_pdbs  
+                   -no_optH                                    Dont change positions of Hydrogen atoms! 
+   Silent input:   -in:file:silent silent.out                  silent input filesname 
+                   -in:file:s                                  specify specific tags to be extracted, if left out all will be taken 
+                   -in:file:fullatom                           for full atom structures 
+                   -in:file:silent_struct_type <type>          specify the input silent-file format 
+   Native:         -in:file:native                             native PDB if CaRMS is required 
+   Scorefunction:  -score:weights  weights                     weight set or weights file 
+                   -score:patch  patch                         patch set 
+                   -rescore:verbose                            display score breakdown 
+                   -rescore:output_only                        don't rescore 
+   Output:         -nooutput                                   don't print PDB structures 
+                   -out:prefix  myprefix                       prefix the output structures with a string 
+   Clustering:     -cluster:radius  <float>                    Cluster radius in A (for RMS clustering) or in inverse GDT_TS for GDT clustering. Use "-1" to trigger automatic radius detection
+                   -cluster:gdtmm                              Cluster by gdtmm instead of rms
+                   -cluster:input_score_filter  <float>        Ignore structures above certain energy 
+                   -cluster:exclude_res <int> [<int> <int> ..] Exclude residue numbers               
+                   -cluster:radius        <float>              Cluster radius
+                   -cluster:limit_cluster_size      <int>      Maximal cluster size
+                   -cluster:limit_cluster_size_percent <float> Maximal cluster size by percentage
+                   -cluster:random_limit_cluster_size_percent <float> Maximal cluster size by percentage, cut randomly
+                   -cluster:limit_clusters          <int>      Maximal number of clusters
+                   -cluster:limit_total_structures  <int>      Maximal number of structures in total
+                   -cluster:sort_groups_by_energy              Sort clusters by energy.
+                   -cluster:remove_highest_energy_member       Remove highest energy member of each cluster
+                   -symmetry:symmetric_rmsd       						 For symmetric systems find the lowest rms by testing all chain combinations. Works only with silent file input that contain symmetry info and with all CA rmsd
+ Examples: 
+   cluster -database ~/minirosetta_database -in:file:silent silent.out -in::file::binary_silentfile -in::file::fullatom -native 1a19.pdb 
+clustered Poses are given output names in the form of:
+ c.i.j, which denotes the jth member of the ith cluster.
+
+
+
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 569 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.599304 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.00_0001.pdb' automatically determined to be of type PDB
+basic.io.database: Database file opened: scoring/score_functions/elec_cp_reps.dat
+core.scoring.elec.util: Read 40 countpair representative atoms
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib_fixes_enable option is true.
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.
+core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/ubuntu/rosetta_src_2017.45.59812_bundle/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.648492 seconds to load from binary
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.00_0001.pdb
+protocols.cluster: Adding struc: 908.559
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.01_0001.pdb
+protocols.cluster: Adding struc: 3074.34
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2995.46
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.03_0001.pdb
+protocols.cluster: Adding struc: 3339.67
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2140.76
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.05_0001.pdb
+protocols.cluster: Adding struc: 1693.21
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1352.45
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.07_0001.pdb
+protocols.cluster: Adding struc: 1795.28
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.08_0001.pdb
+protocols.cluster: Adding struc: 695.442
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2220
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1764.91
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.01_0001.pdb
+protocols.cluster: Adding struc: 3.37323
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2629.1
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.03_0001.pdb
+protocols.cluster: Adding struc: 4419.25
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.04_0001.pdb
+protocols.cluster: Adding struc: 710.67
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2411.83
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2633.37
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.07_0001.pdb
+protocols.cluster: Adding struc: 1323.61
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.08_0001.pdb
+protocols.cluster: Adding struc: 2545.55
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.09_0001.pdb
+protocols.cluster: Adding struc: 1610.88
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.00_0001.pdb
+protocols.cluster: Adding struc: 2673.19
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.01_0001.pdb
+protocols.cluster: Adding struc: 5760.76
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.02_0001.pdb
+protocols.cluster: Adding struc: 3284.21
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.03_0001.pdb
+protocols.cluster: Adding struc: 2736.73
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.04_0001.pdb
+protocols.cluster: Adding struc: 4581.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2263.88
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2269.22
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.07_0001.pdb
+protocols.cluster: Adding struc: 3533.04
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3379.97
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2173.92
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.00_0001.pdb
+protocols.cluster: Adding struc: 2465.13
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.01_0001.pdb
+protocols.cluster: Adding struc: 1329.89
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1829.64
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.03_0001.pdb
+protocols.cluster: Adding struc: 2787.23
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2433.79
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2697.18
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.06_0001.pdb
+protocols.cluster: Adding struc: 3479.38
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.07_0001.pdb
+protocols.cluster: Adding struc: 603.377
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3228.09
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2992.04
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.00_0001.pdb
+protocols.cluster: Adding struc: 7689.05
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2294.2
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1919.87
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.03_0001.pdb
+protocols.cluster: Adding struc: 5244.54
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.04_0001.pdb
+protocols.cluster: Adding struc: 1706.68
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.05_0001.pdb
+protocols.cluster: Adding struc: 3827.47
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1292.45
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.07_0001.pdb
+protocols.cluster: Adding struc: 4995.28
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3442.33
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.09_0001.pdb
+protocols.cluster: Adding struc: 1585.12
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.00_0001.pdb
+protocols.cluster: Adding struc: 3502.79
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.01_0001.pdb
+protocols.cluster: Adding struc: 1819.73
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.02_0001.pdb
+protocols.cluster: Adding struc: 4690.63
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.03_0001.pdb
+protocols.cluster: Adding struc: 3717.4
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2425.85
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2600.24
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2391.43
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.07_0001.pdb
+protocols.cluster: Adding struc: 5508.08
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.08_0001.pdb
+protocols.cluster: Adding struc: 141.181
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2597.68
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.00_0001.pdb
+protocols.cluster: Adding struc: 338.552
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2282.37
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2955.27
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.03_0001.pdb
+protocols.cluster: Adding struc: 1722.45
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.04_0001.pdb
+protocols.cluster: Adding struc: 4752.22
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.05_0001.pdb
+protocols.cluster: Adding struc: 1470.22
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.06_0001.pdb
+protocols.cluster: Adding struc: 3345.79
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.07_0001.pdb
+protocols.cluster: Adding struc: 724.382
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1700.57
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.09_0001.pdb
+protocols.cluster: Adding struc: 3993.31
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.00_0001.pdb
+protocols.cluster: Adding struc: 3733.31
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.01_0001.pdb
+protocols.cluster: Adding struc: 922.025
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1347.88
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.03_0001.pdb
+protocols.cluster: Adding struc: 2645.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.04_0001.pdb
+protocols.cluster: Adding struc: 4641.45
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2380.7
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.06_0001.pdb
+protocols.cluster: Adding struc: 5095.14
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.07_0001.pdb
+protocols.cluster: Adding struc: 1418.58
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3881.05
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.09_0001.pdb
+protocols.cluster: Adding struc: 1342.48
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1109.6
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.01_0001.pdb
+protocols.cluster: Adding struc: 1087.94
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.02_0001.pdb
+protocols.cluster: Adding struc: 5155.18
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.03_0001.pdb
+protocols.cluster: Adding struc: 7141.35
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.04_0001.pdb
+protocols.cluster: Adding struc: 515.698
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.05_0001.pdb
+protocols.cluster: Adding struc: 915.509
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2448.38
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.07_0001.pdb
+protocols.cluster: Adding struc: 2082.37
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.08_0001.pdb
+protocols.cluster: Adding struc: 2475.18
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2204.13
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.00_0001.pdb
+protocols.cluster: Adding struc: 2497.33
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.01_0001.pdb
+protocols.cluster: Adding struc: 600.342
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.02_0001.pdb
+protocols.cluster: Adding struc: 5099.4
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.03_0001.pdb
+protocols.cluster: Adding struc: 1847.73
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.04_0001.pdb
+protocols.cluster: Adding struc: 1936.01
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.05_0001.pdb
+protocols.cluster: Adding struc: 4421.79
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1966.04
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.07_0001.pdb
+protocols.cluster: Adding struc: 676.39
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.08_0001.pdb
+protocols.cluster: Adding struc: 996.584
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.09_0001.pdb
+protocols.cluster: Adding struc: 1029.58
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1720.5
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.01_0001.pdb
+protocols.cluster: Adding struc: 4024.82
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1183.47
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.03_0001.pdb
+protocols.cluster: Adding struc: 3528.44
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.04_0001.pdb
+protocols.cluster: Adding struc: 3167.6
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.05_0001.pdb
+protocols.cluster: Adding struc: 3357.23
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2522.78
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.07_0001.pdb
+protocols.cluster: Adding struc: 2015.84
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1124.04
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.09_0001.pdb
+protocols.cluster: Adding struc: -273.655
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1252.24
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2293.82
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1831.83
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.03_0001.pdb
+protocols.cluster: Adding struc: 3468.54
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.04_0001.pdb
+protocols.cluster: Adding struc: 1249.47
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.05_0001.pdb
+protocols.cluster: Adding struc: 1770.92
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1283.76
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.07_0001.pdb
+protocols.cluster: Adding struc: 1215.93
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3816.47
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.09_0001.pdb
+protocols.cluster: Adding struc: 1744.02
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.00_0001.pdb
+protocols.cluster: Adding struc: 4030.6
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.01_0001.pdb
+protocols.cluster: Adding struc: 8629.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.02_0001.pdb
+protocols.cluster: Adding struc: 3348.76
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.03_0001.pdb
+protocols.cluster: Adding struc: 1994.08
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.04_0001.pdb
+protocols.cluster: Adding struc: 4869.34
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2134.68
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1688.43
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.07_0001.pdb
+protocols.cluster: Adding struc: 4652.41
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.08_0001.pdb
+protocols.cluster: Adding struc: 139.963
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.09_0001.pdb
+protocols.cluster: Adding struc: 723.938
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1084.64
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.01_0001.pdb
+protocols.cluster: Adding struc: 6741.77
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.02_0001.pdb
+protocols.cluster: Adding struc: 4566.56
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.03_0001.pdb
+protocols.cluster: Adding struc: 1311.56
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.04_0001.pdb
+protocols.cluster: Adding struc: 1969.08
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.05_0001.pdb
+protocols.cluster: Adding struc: 893.21
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1778.89
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.07_0001.pdb
+protocols.cluster: Adding struc: 846.642
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1638.42
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.09_0001.pdb
+protocols.cluster: Adding struc: 2257.5
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1596.89
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2318.07
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2301.14
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.03_0001.pdb
+protocols.cluster: Adding struc: 993.344
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.04_0001.pdb
+protocols.cluster: Adding struc: 6136.12
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.05_0001.pdb
+protocols.cluster: Adding struc: 4659.24
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2344.35
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.07_0001.pdb
+protocols.cluster: Adding struc: 770.523
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1584.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.09_0001.pdb
+protocols.cluster: Adding struc: 895.433
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.00_0001.pdb
+protocols.cluster: Adding struc: 2605.13
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.01_0001.pdb
+protocols.cluster: Adding struc: 5344.58
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.02_0001.pdb
+protocols.cluster: Adding struc: 1942.57
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.03_0001.pdb
+protocols.cluster: Adding struc: 466.694
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2917.29
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.05_0001.pdb
+protocols.cluster: Adding struc: 1150.05
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.06_0001.pdb
+protocols.cluster: Adding struc: 3502.4
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.07_0001.pdb
+protocols.cluster: Adding struc: 1531.81
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1145.61
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.09_0001.pdb
+protocols.cluster: Adding struc: 3318.09
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1657.15
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2253.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2032.6
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.03_0001.pdb
+protocols.cluster: Adding struc: 2699.21
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.04_0001.pdb
+protocols.cluster: Adding struc: 5280.54
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2223.66
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2670.93
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.07_0001.pdb
+protocols.cluster: Adding struc: 3773.78
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.08_0001.pdb
+protocols.cluster: Adding struc: 2667.51
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.09_0001.pdb
+protocols.cluster: Adding struc: 3911.63
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.00_0001.pdb
+protocols.cluster: Adding struc: 601.079
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.01_0001.pdb
+protocols.cluster: Adding struc: 1151.06
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2995.57
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.03_0001.pdb
+protocols.cluster: Adding struc: 998.803
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.04_0001.pdb
+protocols.cluster: Adding struc: 1233.29
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.05_0001.pdb
+protocols.cluster: Adding struc: 622.952
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.06_0001.pdb
+protocols.cluster: Adding struc: 2461.94
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.07_0001.pdb
+protocols.cluster: Adding struc: 657.283
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1514.15
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.09_0001.pdb
+protocols.cluster: Adding struc: 3427.31
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.00_0001.pdb
+protocols.cluster: Adding struc: 4318.33
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.01_0001.pdb
+protocols.cluster: Adding struc: 368.841
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.02_0001.pdb
+protocols.cluster: Adding struc: 2070.28
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.03_0001.pdb
+protocols.cluster: Adding struc: 5351.03
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2425.4
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.05_0001.pdb
+protocols.cluster: Adding struc: 905.097
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.06_0001.pdb
+protocols.cluster: Adding struc: 985.629
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.07_0001.pdb
+protocols.cluster: Adding struc: 470.426
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.08_0001.pdb
+protocols.cluster: Adding struc: 1295.62
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.09_0001.pdb
+protocols.cluster: Adding struc: 923.432
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.00_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.00_0001.pdb
+protocols.cluster: Adding struc: 1444.42
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.01_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.01_0001.pdb
+protocols.cluster: Adding struc: 2391.46
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.02_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.02_0001.pdb
+protocols.cluster: Adding struc: 5064.92
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.03_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.03_0001.pdb
+protocols.cluster: Adding struc: 3440.54
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.04_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.04_0001.pdb
+protocols.cluster: Adding struc: 2194.58
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.05_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.05_0001.pdb
+protocols.cluster: Adding struc: 2767.87
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.06_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.06_0001.pdb
+protocols.cluster: Adding struc: 1148.39
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.07_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.07_0001.pdb
+protocols.cluster: Adding struc: 2516.46
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.08_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.08_0001.pdb
+protocols.cluster: Adding struc: 3465.51
+core.import_pose.import_pose: File '/home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.09_0001.pdb' automatically determined to be of type PDB
+protocols.cluster: RESCORING: /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.09_0001.pdb
+protocols.cluster: Adding struc: 5983.35
+protocols.cluster: Clustering an initial set of 200 structures 
+protocols.cluster: Calculating RMS matrix: 
+protocols.cluster: 5000/19900 (     25.1% )
+protocols.cluster: 10000/19900 (     50.3% )
+protocols.cluster: 15000/19900 (     75.4% )
+protocols.cluster: Histogram of pairwise similarity values for the initial clustering set
+protocols.cluster: hist 0   6
+protocols.cluster: hist 0.25   62
+protocols.cluster: hist 0.5   113
+protocols.cluster: hist 0.75   182
+protocols.cluster: hist 1   168
+protocols.cluster: hist 1.25   164
+protocols.cluster: hist 1.5   127
+protocols.cluster: hist 1.75   102
+protocols.cluster: hist 2   153
+protocols.cluster: hist 2.25   144
+protocols.cluster: hist 2.5   156
+protocols.cluster: hist 2.75   145
+protocols.cluster: hist 3   153
+protocols.cluster: hist 3.25   186
+protocols.cluster: hist 3.5   207
+protocols.cluster: hist 3.75   234
+protocols.cluster: hist 4   255
+protocols.cluster: hist 4.25   286
+protocols.cluster: hist 4.5   281
+protocols.cluster: hist 4.75   261
+protocols.cluster: hist 5   237
+protocols.cluster: hist 5.25   225
+protocols.cluster: hist 5.5   233
+protocols.cluster: hist 5.75   279
+protocols.cluster: hist 6   245
+protocols.cluster: hist 6.25   227
+protocols.cluster: hist 6.5   234
+protocols.cluster: hist 6.75   219
+protocols.cluster: hist 7   225
+protocols.cluster: hist 7.25   205
+protocols.cluster: hist 7.5   233
+protocols.cluster: hist 7.75   210
+protocols.cluster: hist 8   215
+protocols.cluster: hist 8.25   207
+protocols.cluster: hist 8.5   152
+protocols.cluster: hist 8.75   131
+protocols.cluster: hist 9   147
+protocols.cluster: hist 9.25   105
+protocols.cluster: hist 9.5   139
+protocols.cluster: hist 9.75   119
+protocols.cluster: hist 10   131
+protocols.cluster: hist 10.25   141
+protocols.cluster: hist 10.5   133
+protocols.cluster: hist 10.75   179
+protocols.cluster: hist 11   145
+protocols.cluster: hist 11.25   139
+protocols.cluster: hist 11.5   156
+protocols.cluster: hist 11.75   160
+protocols.cluster: hist 12   149
+protocols.cluster: hist 12.25   110
+protocols.cluster: hist 12.5   113
+protocols.cluster: hist 12.75   120
+protocols.cluster: hist 13   139
+protocols.cluster: hist 13.25   165
+protocols.cluster: hist 13.5   219
+protocols.cluster: hist 13.75   256
+protocols.cluster: hist 14   391
+protocols.cluster: hist 14.25   498
+protocols.cluster: hist 14.5   429
+protocols.cluster: hist 14.75   388
+protocols.cluster: hist 15   316
+protocols.cluster: hist 15.25   344
+protocols.cluster: hist 15.5   300
+protocols.cluster: hist 15.75   373
+protocols.cluster: hist 16   480
+protocols.cluster: hist 16.25   548
+protocols.cluster: hist 16.5   580
+protocols.cluster: hist 16.75   464
+protocols.cluster: hist 17   536
+protocols.cluster: hist 17.25   634
+protocols.cluster: hist 17.5   763
+protocols.cluster: hist 17.75   1161
+protocols.cluster: hist 18   1076
+protocols.cluster: hist 18.25   549
+protocols.cluster: hist 18.5   166
+protocols.cluster: hist 18.75   54
+protocols.cluster: hist 19   20
+protocols.cluster: hist 19.25   3
+protocols.cluster: hist 19.5   0
+protocols.cluster: hist 19.75   0
+protocols.cluster: Median RMS 17.75
+protocols.cluster: Clustering of 200structures with radius 5
+protocols.cluster: Assigning initial cluster centres 
+protocols.cluster: .protocols.cluster: 
+protocols.cluster: Redistributing groups ...13 cluster centersSwitched 4<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 8<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 8<--0
+protocols.cluster: Switched 4<--0
+protocols.cluster: Switched 8<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 9<--0
+protocols.cluster: Switched 8<--0
+protocols.cluster: Switched 7<--1
+protocols.cluster: Switched 3<--1
+protocols.cluster: Switched 3<--1
+protocols.cluster: Switched 7<--1
+protocols.cluster: Switched 7<--1
+protocols.cluster: Switched 7<--1
+protocols.cluster: Switched 7<--1
+protocols.cluster: Switched 10<--1
+protocols.cluster: Switched 12<--3
+protocols.cluster: Switched 10<--3
+protocols.cluster: Switched 10<--3
+protocols.cluster: Switched 10<--3
+protocols.cluster: Switched 10<--3
+protocols.cluster: Switched 10<--3
+protocols.cluster: Switched 12<--3
+protocols.cluster: Switched 10<--3
+Assigning extra structures ... 
+protocols.cluster: ---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 43GN: 44   c.0.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.00_0001.pdb  908.559
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.05_0001.pdb  1693.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.00_0001.pdb  1764.91
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.05_0001.pdb  2411.83
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.00_0001.pdb  2673.19
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.05_0001.pdb  2263.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.00_0001.pdb  2465.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.03_0001.pdb  2787.23
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.03_0001.pdb  5244.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.07_0001.pdb  4995.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.00_0001.pdb  3502.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.06_0001.pdb  2391.43
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.00_0001.pdb  338.552
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.02_0001.pdb  2955.27
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.00_0001.pdb  3733.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.03_0001.pdb  2645.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.01_0001.pdb  1087.94
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.08_0001.pdb  2475.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.00_0001.pdb  2497.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.01_0001.pdb  600.342
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.00_0001.pdb  1720.5
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.02_0001.pdb  1183.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.00_0001.pdb  1252.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.07_0001.pdb  1215.93
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.00_0001.pdb  4030.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.06_0001.pdb  1688.43
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.00_0001.pdb  1084.64
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.05_0001.pdb  893.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.00_0001.pdb  1596.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.01_0001.pdb  2318.07
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.00_0001.pdb  2605.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.02_0001.pdb  1942.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.06_0001.pdb  3502.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.09_0001.pdb  3318.09
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.00_0001.pdb  1657.15
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.04_0001.pdb  5280.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.01_0001.pdb  1151.06
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.08_0001.pdb  1514.15
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.00_0001.pdb  4318.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.01_0001.pdb  368.841
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.00_0001.pdb  1444.42
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.04_0001.pdb  2194.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.07_0001.pdb  2516.46
+protocols.cluster: Cluster:  1  N: 37GN: 38   c.1.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.02_0001.pdb  2995.46
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.04_0001.pdb  2140.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.02_0001.pdb  2629.1
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.09_0001.pdb  1610.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.04_0001.pdb  4581.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.02_0001.pdb  1829.64
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.05_0001.pdb  2697.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.06_0001.pdb  3479.38
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.04_0001.pdb  1706.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.04_0001.pdb  2425.85
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.03_0001.pdb  1722.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.05_0001.pdb  1470.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.08_0001.pdb  1700.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.01_0001.pdb  922.025
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.06_0001.pdb  5095.14
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.00_0001.pdb  1109.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.02_0001.pdb  5155.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.03_0001.pdb  1847.73
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.04_0001.pdb  1936.01
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.03_0001.pdb  3528.44
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.05_0001.pdb  3357.23
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.02_0001.pdb  1831.83
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.04_0001.pdb  1249.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.08_0001.pdb  3816.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.04_0001.pdb  4869.34
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.05_0001.pdb  2134.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.04_0001.pdb  1969.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.03_0001.pdb  993.344
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.04_0001.pdb  6136.12
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.06_0001.pdb  2344.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.08_0001.pdb  1145.61
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.02_0001.pdb  2032.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.03_0001.pdb  2699.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.04_0001.pdb  1233.29
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.02_0001.pdb  2070.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.01_0001.pdb  2391.46
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.06_0001.pdb  1148.39
+protocols.cluster: Cluster:  2  N: 22GN: 23   c.2.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.03_0001.pdb  3339.67
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.09_0001.pdb  2220
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.03_0001.pdb  4419.25
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.01_0001.pdb  5760.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.04_0001.pdb  2433.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.00_0001.pdb  7689.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.08_0001.pdb  3442.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.02_0001.pdb  4690.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.04_0001.pdb  4752.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.04_0001.pdb  4641.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.03_0001.pdb  7141.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.02_0001.pdb  5099.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.04_0001.pdb  3167.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.03_0001.pdb  3468.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.01_0001.pdb  8629.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.01_0001.pdb  6741.77
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.05_0001.pdb  4659.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.01_0001.pdb  5344.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.01_0001.pdb  2253.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.02_0001.pdb  2995.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.03_0001.pdb  5351.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.02_0001.pdb  5064.92
+protocols.cluster: Cluster:  3  N: 15GN: 16   c.3.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.04_0001.pdb  710.67
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.06_0001.pdb  2269.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.06_0001.pdb  3345.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.09_0001.pdb  1342.48
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.07_0001.pdb  2015.84
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.02_0001.pdb  3348.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.03_0001.pdb  1311.56
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.08_0001.pdb  1638.42
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.04_0001.pdb  2917.29
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.07_0001.pdb  3773.78
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.00_0001.pdb  601.079
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.06_0001.pdb  2461.94
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.09_0001.pdb  923.432
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.01_0001.pdb  2294.2
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.01_0001.pdb  1819.73
+protocols.cluster: Cluster:  4  N: 28GN: 29   c.4.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.07_0001.pdb  1795.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.09_0001.pdb  2173.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.08_0001.pdb  3228.09
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.09_0001.pdb  3993.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.08_0001.pdb  3881.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.05_0001.pdb  4421.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.08_0001.pdb  996.584
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.01_0001.pdb  2293.82
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.09_0001.pdb  2257.5
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.07_0001.pdb  770.523
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.05_0001.pdb  1150.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.05_0001.pdb  2223.66
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.09_0001.pdb  3427.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.04_0001.pdb  2425.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.07_0001.pdb  470.426
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.08_0001.pdb  1295.62
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.01_0001.pdb  3074.34
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.01_0001.pdb  3.37323
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.02_0001.pdb  3284.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.01_0001.pdb  1329.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.02_0001.pdb  1919.87
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.03_0001.pdb  3717.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.01_0001.pdb  2282.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.02_0001.pdb  1347.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.05_0001.pdb  915.509
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.01_0001.pdb  4024.82
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.03_0001.pdb  1994.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.02_0001.pdb  4566.56
+protocols.cluster: Cluster:  5  N: 10GN: 11   c.5.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.09_0001.pdb  2992.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.09_0001.pdb  1585.12
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.07_0001.pdb  724.382
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.05_0001.pdb  2380.7
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.06_0001.pdb  2448.38
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.06_0001.pdb  1966.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.09_0001.pdb  723.938
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.06_0001.pdb  1778.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.09_0001.pdb  895.433
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.05_0001.pdb  622.952
+protocols.cluster: Cluster:  6  N: 8GN: 9   c.6.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.08_0001.pdb  695.442
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.08_0001.pdb  3379.97
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.07_0001.pdb  603.377
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.08_0001.pdb  141.181
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.07_0001.pdb  676.39
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.09_0001.pdb  -273.655
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.09_0001.pdb  1744.02
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.05_0001.pdb  905.097
+protocols.cluster: Cluster:  7  N: 8GN: 9   c.7.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.06_0001.pdb  1352.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.04_0001.pdb  515.698
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.07_0001.pdb  2082.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.03_0001.pdb  2736.73
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.05_0001.pdb  2600.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.06_0001.pdb  1283.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.06_0001.pdb  2670.93
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.06_0001.pdb  985.629
+protocols.cluster: Cluster:  8  N: 7GN: 8   c.8.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.07_0001.pdb  5508.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.09_0001.pdb  3911.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.09_0001.pdb  5983.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.09_0001.pdb  2597.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.07_0001.pdb  4652.41
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.02_0001.pdb  2301.14
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.05_0001.pdb  2767.87
+protocols.cluster: Cluster:  9  N: 10GN: 11   c.9.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.08_0001.pdb  1584.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.03_0001.pdb  466.694
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.06_0001.pdb  2633.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.05_0001.pdb  3827.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.09_0001.pdb  1029.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.06_0001.pdb  2522.78
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.05_0001.pdb  1770.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.08_0001.pdb  2667.51
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.03_0001.pdb  998.803
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.03_0001.pdb  3440.54
+protocols.cluster: Cluster:  10  N: 8GN: 9   c.10.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.08_0001.pdb  2545.55
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.08_0001.pdb  3465.51
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.07_0001.pdb  1418.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.09_0001.pdb  2204.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.08_0001.pdb  1124.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.08_0001.pdb  139.963
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.07_0001.pdb  846.642
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.07_0001.pdb  657.283
+protocols.cluster: Cluster:  11  N: 1GN: 2   c.11.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.07_0001.pdb  3533.04
+protocols.cluster: Cluster:  12  N: 3GN: 4   c.12.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.06_0001.pdb  1292.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.07_0001.pdb  1323.61
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.07_0001.pdb  1531.81
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 13
+protocols.cluster:   Structures: 200
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: ---------- Summary ---------------------------------
+protocols.cluster: Cluster:  0  N: 43GN: 44   c.0.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.00_0001.pdb  908.559
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.05_0001.pdb  1693.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.00_0001.pdb  1764.91
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.05_0001.pdb  2411.83
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.00_0001.pdb  2673.19
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.05_0001.pdb  2263.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.00_0001.pdb  2465.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.03_0001.pdb  2787.23
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.03_0001.pdb  5244.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.07_0001.pdb  4995.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.00_0001.pdb  3502.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.06_0001.pdb  2391.43
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.00_0001.pdb  338.552
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.02_0001.pdb  2955.27
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.00_0001.pdb  3733.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.03_0001.pdb  2645.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.01_0001.pdb  1087.94
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.08_0001.pdb  2475.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.00_0001.pdb  2497.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.01_0001.pdb  600.342
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.00_0001.pdb  1720.5
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.02_0001.pdb  1183.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.00_0001.pdb  1252.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.07_0001.pdb  1215.93
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.00_0001.pdb  4030.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.06_0001.pdb  1688.43
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.00_0001.pdb  1084.64
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.05_0001.pdb  893.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.00_0001.pdb  1596.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.01_0001.pdb  2318.07
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.00_0001.pdb  2605.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.02_0001.pdb  1942.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.06_0001.pdb  3502.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.09_0001.pdb  3318.09
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.00_0001.pdb  1657.15
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.04_0001.pdb  5280.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.01_0001.pdb  1151.06
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.08_0001.pdb  1514.15
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.00_0001.pdb  4318.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.01_0001.pdb  368.841
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.00_0001.pdb  1444.42
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.04_0001.pdb  2194.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.07_0001.pdb  2516.46
+protocols.cluster: Cluster:  1  N: 37GN: 38   c.1.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.02_0001.pdb  2995.46
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.04_0001.pdb  2140.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.02_0001.pdb  2629.1
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.09_0001.pdb  1610.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.04_0001.pdb  4581.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.02_0001.pdb  1829.64
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.05_0001.pdb  2697.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.06_0001.pdb  3479.38
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.04_0001.pdb  1706.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.04_0001.pdb  2425.85
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.03_0001.pdb  1722.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.05_0001.pdb  1470.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.08_0001.pdb  1700.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.01_0001.pdb  922.025
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.06_0001.pdb  5095.14
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.00_0001.pdb  1109.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.02_0001.pdb  5155.18
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.03_0001.pdb  1847.73
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.04_0001.pdb  1936.01
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.03_0001.pdb  3528.44
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.05_0001.pdb  3357.23
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.02_0001.pdb  1831.83
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.04_0001.pdb  1249.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.08_0001.pdb  3816.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.04_0001.pdb  4869.34
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.05_0001.pdb  2134.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.04_0001.pdb  1969.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.03_0001.pdb  993.344
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.04_0001.pdb  6136.12
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.06_0001.pdb  2344.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.08_0001.pdb  1145.61
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.02_0001.pdb  2032.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.03_0001.pdb  2699.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.04_0001.pdb  1233.29
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.02_0001.pdb  2070.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.01_0001.pdb  2391.46
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.06_0001.pdb  1148.39
+protocols.cluster: Cluster:  2  N: 22GN: 23   c.2.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.03_0001.pdb  3339.67
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.09_0001.pdb  2220
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.03_0001.pdb  4419.25
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.01_0001.pdb  5760.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.04_0001.pdb  2433.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.00_0001.pdb  7689.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.08_0001.pdb  3442.33
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.02_0001.pdb  4690.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.04_0001.pdb  4752.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.04_0001.pdb  4641.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.03_0001.pdb  7141.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.02_0001.pdb  5099.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.04_0001.pdb  3167.6
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.03_0001.pdb  3468.54
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.01_0001.pdb  8629.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.01_0001.pdb  6741.77
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.05_0001.pdb  4659.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.01_0001.pdb  5344.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.01_0001.pdb  2253.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.02_0001.pdb  2995.57
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.03_0001.pdb  5351.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.02_0001.pdb  5064.92
+protocols.cluster: Cluster:  3  N: 15GN: 16   c.3.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.04_0001.pdb  710.67
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.06_0001.pdb  2269.22
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.06_0001.pdb  3345.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.09_0001.pdb  1342.48
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.07_0001.pdb  2015.84
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.02_0001.pdb  3348.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.03_0001.pdb  1311.56
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.08_0001.pdb  1638.42
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.04_0001.pdb  2917.29
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.07_0001.pdb  3773.78
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.00_0001.pdb  601.079
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.06_0001.pdb  2461.94
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.09_0001.pdb  923.432
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.01_0001.pdb  2294.2
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.01_0001.pdb  1819.73
+protocols.cluster: Cluster:  4  N: 28GN: 29   c.4.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.07_0001.pdb  1795.28
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.09_0001.pdb  2173.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.08_0001.pdb  3228.09
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.09_0001.pdb  3993.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.08_0001.pdb  3881.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.05_0001.pdb  4421.79
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.08_0001.pdb  996.584
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.01_0001.pdb  2293.82
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.09_0001.pdb  2257.5
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.07_0001.pdb  770.523
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.05_0001.pdb  1150.05
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.05_0001.pdb  2223.66
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.09_0001.pdb  3427.31
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.04_0001.pdb  2425.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.07_0001.pdb  470.426
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.08_0001.pdb  1295.62
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.01_0001.pdb  3074.34
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.01_0001.pdb  3.37323
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.02_0001.pdb  3284.21
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.01_0001.pdb  1329.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.02_0001.pdb  1919.87
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.03_0001.pdb  3717.4
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.01_0001.pdb  2282.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.02_0001.pdb  1347.88
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.05_0001.pdb  915.509
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.01_0001.pdb  4024.82
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.03_0001.pdb  1994.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.02_0001.pdb  4566.56
+protocols.cluster: Cluster:  5  N: 10GN: 11   c.5.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.09_0001.pdb  2992.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.09_0001.pdb  1585.12
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.07_0001.pdb  724.382
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.05_0001.pdb  2380.7
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.06_0001.pdb  2448.38
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.06_0001.pdb  1966.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.09_0001.pdb  723.938
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.06_0001.pdb  1778.89
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.09_0001.pdb  895.433
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.05_0001.pdb  622.952
+protocols.cluster: Cluster:  6  N: 8GN: 9   c.6.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.08_0001.pdb  695.442
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.08_0001.pdb  3379.97
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.07_0001.pdb  603.377
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.08_0001.pdb  141.181
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.07_0001.pdb  676.39
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.09_0001.pdb  -273.655
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.09_0001.pdb  1744.02
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.05_0001.pdb  905.097
+protocols.cluster: Cluster:  7  N: 8GN: 9   c.7.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.06_0001.pdb  1352.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.04_0001.pdb  515.698
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.07_0001.pdb  2082.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.03_0001.pdb  2736.73
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.05_0001.pdb  2600.24
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.06_0001.pdb  1283.76
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.06_0001.pdb  2670.93
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.06_0001.pdb  985.629
+protocols.cluster: Cluster:  8  N: 7GN: 8   c.8.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.07_0001.pdb  5508.08
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.09_0001.pdb  3911.63
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.09_0001.pdb  5983.35
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.09_0001.pdb  2597.68
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.07_0001.pdb  4652.41
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.02_0001.pdb  2301.14
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.05_0001.pdb  2767.87
+protocols.cluster: Cluster:  9  N: 10GN: 11   c.9.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.08_0001.pdb  1584.03
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.03_0001.pdb  466.694
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.06_0001.pdb  2633.37
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.05_0001.pdb  3827.47
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.09_0001.pdb  1029.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.06_0001.pdb  2522.78
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.05_0001.pdb  1770.92
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.08_0001.pdb  2667.51
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.03_0001.pdb  998.803
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.03_0001.pdb  3440.54
+protocols.cluster: Cluster:  10  N: 8GN: 9   c.10.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.08_0001.pdb  2545.55
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.08_0001.pdb  3465.51
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.07_0001.pdb  1418.58
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.09_0001.pdb  2204.13
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.08_0001.pdb  1124.04
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.08_0001.pdb  139.963
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.07_0001.pdb  846.642
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.07_0001.pdb  657.283
+protocols.cluster: Cluster:  11  N: 1GN: 2   c.11.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.07_0001.pdb  3533.04
+protocols.cluster: Cluster:  12  N: 3GN: 4   c.12.*.pdb 
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.06_0001.pdb  1292.45
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.07_0001.pdb  1323.61
+protocols.cluster:     /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.07_0001.pdb  1531.81
+protocols.cluster: ----------------------------------------------------
+protocols.cluster:   Clusters: 13
+protocols.cluster:   Structures: 200
+protocols.cluster: ----------------------------------------------------
+protocols.cluster: 0 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.00_0001.pdb  0  0
+protocols.cluster: 5 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.05_0001.pdb  0  1
+protocols.cluster: 10 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.00_0001.pdb  0  2
+protocols.cluster: 15 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.05_0001.pdb  0  3
+protocols.cluster: 20 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.00_0001.pdb  0  4
+protocols.cluster: 25 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.05_0001.pdb  0  5
+protocols.cluster: 30 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.00_0001.pdb  0  6
+protocols.cluster: 33 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.03_0001.pdb  0  7
+protocols.cluster: 43 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.03_0001.pdb  0  8
+protocols.cluster: 47 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.07_0001.pdb  0  9
+protocols.cluster: 50 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.00_0001.pdb  0  10
+protocols.cluster: 56 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.06_0001.pdb  0  11
+protocols.cluster: 60 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.00_0001.pdb  0  12
+protocols.cluster: 62 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.02_0001.pdb  0  13
+protocols.cluster: 70 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.00_0001.pdb  0  14
+protocols.cluster: 73 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.03_0001.pdb  0  15
+protocols.cluster: 81 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.01_0001.pdb  0  16
+protocols.cluster: 88 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.08_0001.pdb  0  17
+protocols.cluster: 90 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.00_0001.pdb  0  18
+protocols.cluster: 91 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.01_0001.pdb  0  19
+protocols.cluster: 100 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.00_0001.pdb  0  20
+protocols.cluster: 102 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.02_0001.pdb  0  21
+protocols.cluster: 110 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.00_0001.pdb  0  22
+protocols.cluster: 117 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.07_0001.pdb  0  23
+protocols.cluster: 120 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.00_0001.pdb  0  24
+protocols.cluster: 126 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.06_0001.pdb  0  25
+protocols.cluster: 130 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.00_0001.pdb  0  26
+protocols.cluster: 135 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.05_0001.pdb  0  27
+protocols.cluster: 140 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.00_0001.pdb  0  28
+protocols.cluster: 141 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.01_0001.pdb  0  29
+protocols.cluster: 150 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.00_0001.pdb  0  30
+protocols.cluster: 152 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.02_0001.pdb  0  31
+protocols.cluster: 156 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.06_0001.pdb  0  32
+protocols.cluster: 159 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.09_0001.pdb  0  33
+protocols.cluster: 160 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.00_0001.pdb  0  34
+protocols.cluster: 164 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.04_0001.pdb  0  35
+protocols.cluster: 171 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.01_0001.pdb  0  36
+protocols.cluster: 178 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.08_0001.pdb  0  37
+protocols.cluster: 180 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.00_0001.pdb  0  38
+protocols.cluster: 181 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.01_0001.pdb  0  39
+protocols.cluster: 190 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.00_0001.pdb  0  40
+protocols.cluster: 194 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.04_0001.pdb  0  41
+protocols.cluster: 197 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.07_0001.pdb  0  42
+protocols.cluster: 2 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.02_0001.pdb  1  0
+protocols.cluster: 4 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.04_0001.pdb  1  1
+protocols.cluster: 12 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.02_0001.pdb  1  2
+protocols.cluster: 19 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.09_0001.pdb  1  3
+protocols.cluster: 24 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.04_0001.pdb  1  4
+protocols.cluster: 32 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.02_0001.pdb  1  5
+protocols.cluster: 35 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.05_0001.pdb  1  6
+protocols.cluster: 36 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.06_0001.pdb  1  7
+protocols.cluster: 44 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.04_0001.pdb  1  8
+protocols.cluster: 54 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.04_0001.pdb  1  9
+protocols.cluster: 63 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.03_0001.pdb  1  10
+protocols.cluster: 65 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.05_0001.pdb  1  11
+protocols.cluster: 68 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.08_0001.pdb  1  12
+protocols.cluster: 71 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.01_0001.pdb  1  13
+protocols.cluster: 76 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.06_0001.pdb  1  14
+protocols.cluster: 80 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.00_0001.pdb  1  15
+protocols.cluster: 82 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.02_0001.pdb  1  16
+protocols.cluster: 93 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.03_0001.pdb  1  17
+protocols.cluster: 94 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.04_0001.pdb  1  18
+protocols.cluster: 103 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.03_0001.pdb  1  19
+protocols.cluster: 105 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.05_0001.pdb  1  20
+protocols.cluster: 112 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.02_0001.pdb  1  21
+protocols.cluster: 114 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.04_0001.pdb  1  22
+protocols.cluster: 118 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.08_0001.pdb  1  23
+protocols.cluster: 124 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.04_0001.pdb  1  24
+protocols.cluster: 125 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.05_0001.pdb  1  25
+protocols.cluster: 134 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.04_0001.pdb  1  26
+protocols.cluster: 143 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.03_0001.pdb  1  27
+protocols.cluster: 144 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.04_0001.pdb  1  28
+protocols.cluster: 146 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.06_0001.pdb  1  29
+protocols.cluster: 158 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.08_0001.pdb  1  30
+protocols.cluster: 162 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.02_0001.pdb  1  31
+protocols.cluster: 163 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.03_0001.pdb  1  32
+protocols.cluster: 174 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.04_0001.pdb  1  33
+protocols.cluster: 182 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.02_0001.pdb  1  34
+protocols.cluster: 191 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.01_0001.pdb  1  35
+protocols.cluster: 196 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.06_0001.pdb  1  36
+protocols.cluster: 3 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.03_0001.pdb  2  0
+protocols.cluster: 9 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.09_0001.pdb  2  1
+protocols.cluster: 13 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.03_0001.pdb  2  2
+protocols.cluster: 21 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.01_0001.pdb  2  3
+protocols.cluster: 34 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.04_0001.pdb  2  4
+protocols.cluster: 40 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.00_0001.pdb  2  5
+protocols.cluster: 48 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.08_0001.pdb  2  6
+protocols.cluster: 52 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.02_0001.pdb  2  7
+protocols.cluster: 64 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.04_0001.pdb  2  8
+protocols.cluster: 74 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.04_0001.pdb  2  9
+protocols.cluster: 83 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.03_0001.pdb  2  10
+protocols.cluster: 92 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.02_0001.pdb  2  11
+protocols.cluster: 104 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.04_0001.pdb  2  12
+protocols.cluster: 113 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.03_0001.pdb  2  13
+protocols.cluster: 121 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.01_0001.pdb  2  14
+protocols.cluster: 131 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.01_0001.pdb  2  15
+protocols.cluster: 145 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.05_0001.pdb  2  16
+protocols.cluster: 151 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.01_0001.pdb  2  17
+protocols.cluster: 161 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.01_0001.pdb  2  18
+protocols.cluster: 172 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.02_0001.pdb  2  19
+protocols.cluster: 183 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.03_0001.pdb  2  20
+protocols.cluster: 192 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.02_0001.pdb  2  21
+protocols.cluster: 14 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.04_0001.pdb  3  0
+protocols.cluster: 26 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.06_0001.pdb  3  1
+protocols.cluster: 66 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.06_0001.pdb  3  2
+protocols.cluster: 79 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.09_0001.pdb  3  3
+protocols.cluster: 107 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.07_0001.pdb  3  4
+protocols.cluster: 122 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.02_0001.pdb  3  5
+protocols.cluster: 133 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.03_0001.pdb  3  6
+protocols.cluster: 138 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.08_0001.pdb  3  7
+protocols.cluster: 154 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.04_0001.pdb  3  8
+protocols.cluster: 167 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.07_0001.pdb  3  9
+protocols.cluster: 170 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.00_0001.pdb  3  10
+protocols.cluster: 176 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.06_0001.pdb  3  11
+protocols.cluster: 189 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.09_0001.pdb  3  12
+protocols.cluster: 41 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.01_0001.pdb  3  13
+protocols.cluster: 51 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.01_0001.pdb  3  14
+protocols.cluster: 7 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.07_0001.pdb  4  0
+protocols.cluster: 29 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.09_0001.pdb  4  1
+protocols.cluster: 38 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.08_0001.pdb  4  2
+protocols.cluster: 69 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.09_0001.pdb  4  3
+protocols.cluster: 78 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.08_0001.pdb  4  4
+protocols.cluster: 95 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.05_0001.pdb  4  5
+protocols.cluster: 98 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.08_0001.pdb  4  6
+protocols.cluster: 111 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.01_0001.pdb  4  7
+protocols.cluster: 139 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.09_0001.pdb  4  8
+protocols.cluster: 147 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.07_0001.pdb  4  9
+protocols.cluster: 155 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.05_0001.pdb  4  10
+protocols.cluster: 165 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.05_0001.pdb  4  11
+protocols.cluster: 179 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.09_0001.pdb  4  12
+protocols.cluster: 184 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.04_0001.pdb  4  13
+protocols.cluster: 187 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.07_0001.pdb  4  14
+protocols.cluster: 188 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.08_0001.pdb  4  15
+protocols.cluster: 1 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.01_0001.pdb  4  16
+protocols.cluster: 11 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.01_0001.pdb  4  17
+protocols.cluster: 22 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.02_0001.pdb  4  18
+protocols.cluster: 31 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.01_0001.pdb  4  19
+protocols.cluster: 42 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.02_0001.pdb  4  20
+protocols.cluster: 53 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.03_0001.pdb  4  21
+protocols.cluster: 61 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.01_0001.pdb  4  22
+protocols.cluster: 72 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.02_0001.pdb  4  23
+protocols.cluster: 85 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.05_0001.pdb  4  24
+protocols.cluster: 101 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.01_0001.pdb  4  25
+protocols.cluster: 123 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.03_0001.pdb  4  26
+protocols.cluster: 132 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.02_0001.pdb  4  27
+protocols.cluster: 39 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.09_0001.pdb  5  0
+protocols.cluster: 49 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.09_0001.pdb  5  1
+protocols.cluster: 67 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en16model.000.07_0001.pdb  5  2
+protocols.cluster: 75 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.05_0001.pdb  5  3
+protocols.cluster: 86 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.06_0001.pdb  5  4
+protocols.cluster: 96 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.06_0001.pdb  5  5
+protocols.cluster: 129 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.09_0001.pdb  5  6
+protocols.cluster: 136 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.06_0001.pdb  5  7
+protocols.cluster: 149 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.09_0001.pdb  5  8
+protocols.cluster: 175 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.05_0001.pdb  5  9
+protocols.cluster: 8 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.08_0001.pdb  6  0
+protocols.cluster: 28 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.08_0001.pdb  6  1
+protocols.cluster: 37 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en13model.000.07_0001.pdb  6  2
+protocols.cluster: 58 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.08_0001.pdb  6  3
+protocols.cluster: 97 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.07_0001.pdb  6  4
+protocols.cluster: 109 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.09_0001.pdb  6  5
+protocols.cluster: 119 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.09_0001.pdb  6  6
+protocols.cluster: 185 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.05_0001.pdb  6  7
+protocols.cluster: 6 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en10model.000.06_0001.pdb  7  0
+protocols.cluster: 84 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.04_0001.pdb  7  1
+protocols.cluster: 87 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.07_0001.pdb  7  2
+protocols.cluster: 23 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.03_0001.pdb  7  3
+protocols.cluster: 55 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.05_0001.pdb  7  4
+protocols.cluster: 116 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.06_0001.pdb  7  5
+protocols.cluster: 166 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.06_0001.pdb  7  6
+protocols.cluster: 186 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en8model.000.06_0001.pdb  7  7
+protocols.cluster: 57 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.07_0001.pdb  8  0
+protocols.cluster: 169 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.09_0001.pdb  8  1
+protocols.cluster: 199 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.09_0001.pdb  8  2
+protocols.cluster: 59 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en15model.000.09_0001.pdb  8  3
+protocols.cluster: 127 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.07_0001.pdb  8  4
+protocols.cluster: 142 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.02_0001.pdb  8  5
+protocols.cluster: 195 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.05_0001.pdb  8  6
+protocols.cluster: 148 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en4model.000.08_0001.pdb  9  0
+protocols.cluster: 153 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.03_0001.pdb  9  1
+protocols.cluster: 16 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.06_0001.pdb  9  2
+protocols.cluster: 45 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.05_0001.pdb  9  3
+protocols.cluster: 99 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en19model.000.09_0001.pdb  9  4
+protocols.cluster: 106 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.06_0001.pdb  9  5
+protocols.cluster: 115 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en20model.000.05_0001.pdb  9  6
+protocols.cluster: 168 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en6model.000.08_0001.pdb  9  7
+protocols.cluster: 173 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.03_0001.pdb  9  8
+protocols.cluster: 193 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.03_0001.pdb  9  9
+protocols.cluster: 18 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.08_0001.pdb  10  0
+protocols.cluster: 198 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en9model.000.08_0001.pdb  10  1
+protocols.cluster: 77 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en17model.000.07_0001.pdb  10  2
+protocols.cluster: 89 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en18model.000.09_0001.pdb  10  3
+protocols.cluster: 108 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en1model.000.08_0001.pdb  10  4
+protocols.cluster: 128 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en2model.000.08_0001.pdb  10  5
+protocols.cluster: 137 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en3model.000.07_0001.pdb  10  6
+protocols.cluster: 177 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en7model.000.07_0001.pdb  10  7
+protocols.cluster: 27 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en12model.000.07_0001.pdb  11  0
+protocols.cluster: 46 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en14model.000.06_0001.pdb  12  0
+protocols.cluster: 17 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en11model.000.07_0001.pdb  12  1
+protocols.cluster: 157 /home/ubuntu/Demo2/ClusPro/sequential_clustering/en5model.000.07_0001.pdb  12  2
+Timing: 
+  Readin:159s
+  Cluster: 14s
+  Additional Clustering: 0s
+  Total: 173
